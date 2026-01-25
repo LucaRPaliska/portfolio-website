@@ -1,23 +1,144 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+const { children } = Astro.props;
+import TypeIt from 'typeit';
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
+  </head>
+  <body>
+
+    <header class="site-header gravity">
+      <div class="logo">
+        <a href="/">
+          <img src="/images/logo.svg" alt="LP Website" class="white-icon"/>
+        </a>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/projects">PROJECTS</a></li>
+          <li><a href="/blog">BLOG</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="name-card">
+      <div id="typewriter", class="hidden", center="true"></div>
+      <div id="name-solid", class="hidden italiana-regular">Luca Paliska</div>
+      <div id="introduction"></div>
+    </div>
+
+    <script>
+      import TypeIt from 'typeit';
+      document.getElementById("typewriter").classList.toggle("hidden");
+
+      new TypeIt("#typewriter", { speed: 50 })
+        .type("luca paliska")
+        .pause(100)
+
+        // TODO: / CURRENTLY WORKING ON: Adding introduction paragraph and then other platform navigation
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.textContent = "";
+            cursor.classList.add('vim-normal');
+          }
+        })
+        .pause(380)
+
+        .move(-6, { instant: true }) 
+        .pause(190)
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) { // TODO: check if this if statement is 
+            // needed or if these funcs are compactable in any way.
+            cursor.classList.remove('vim-normal');
+            cursor.classList.add('vim-replace');
+          }
+        })
+        .pause(110)
+
+        .delete(1, {instant: true})
+        .type('P', {instant: true})
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.classList.add('vim-normal');
+            cursor.classList.remove('vim-replace');
+          }
+        })
+        .pause(170)
+
+        .move(-5, { instant: true }) 
+        .pause(170)
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.classList.remove('vim-normal');
+            cursor.classList.add('vim-replace');
+          }
+        })
+        .pause(110)
+
+        .delete(1, {instant: true})
+        .type('L', {instant: true})
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.textContent = "";
+            cursor.classList.add('vim-normal');
+            cursor.classList.remove('vim-replace');
+          }
+        })
+        .pause(190)
+
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.textContent = "";
+            cursor.classList.remove('vim-normal');
+            cursor.classList.add('vim-command');
+          }
+        })
+        .move(11, { instant: true }) 
+        .type('<br> :', { instant: true })
+        .type('wq')
+        .pause(100)
+        .delete(3, {instant: true})
+
+        .exec(() => {
+          const cursor = document.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.style.opacity = '0';
+            cursor.classList.remove('vim-command');
+          }
+          console.log('bruh');
+          document.getElementById("name-solid").classList.toggle("hidden");
+          document.getElementById("typewriter").classList.toggle("hidden");
+        })
+
+        .go();
+
+      // TODO: Move these to seperate files and modulate all typeit stuff.
+
+    </script>
+
+    <footer class="site-footer">
+      &copy; 2026 Luca
+    </footer>
+  </body>
+</html>
