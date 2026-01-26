@@ -11,6 +11,7 @@ import TypeIt from 'typeit';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/styles/global.css">
   </head>
   <body>
@@ -39,11 +40,42 @@ import TypeIt from 'typeit';
       </nav>
     </header>
 
-    <div class="name-card">
-      <div id="typewriter", class="hidden", center="true"></div>
-      <div id="name-solid", class="italiana-regular">Luca Paliska</div>
-      <div id="introduction">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
-      <div id="socials"></div>
+    <div class="intro-container">
+      <div class="name-card">
+        <div id="typewriter", class="hidden", center="true"></div>
+        <div id="name-solid", class="italiana-regular">Luca Paliska</div>
+        <div id="introduction" class="gravity">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
+      </div>
+      <div id="socials">
+        <nav>
+          <ul>
+            <li><a href="https://x.com/LucaRPaliska" class="social-button">
+              <i class="fab fa-twitter icon"></i>
+              <span class="button-text">twitter</span>
+            </a></li>
+            <li><a href="https://github.com/LucaRPaliska" class="social-button">
+              <i class="fab fa-github icon"></i>
+              <span class="button-text">github</span>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button">
+              <i class="fab fa-linkedin icon"></i>
+              <span class="button-text">linkedin</span>
+            </a></li>
+            <li><a href="https://devpost.com/lucarpaliska" class="social-button">
+              <img src="/images/devpost.svg" alt="Devpost Logo" class="devpost-logo"/>
+              <span class="button-text">devpost</span>
+            </a></li>
+            <li><a href="lucarpaliska@gmail.com" class="social-button">
+              <i class="fa-solid fa-envelope icon"></i>
+              <span class="button-text">email</span>
+            </a></li>
+            <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button">
+              <img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>
+              <span class="button-text">scratch</span>
+            </a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <script>
