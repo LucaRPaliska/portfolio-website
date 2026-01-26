@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+/* Fonts */ 
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #161616;
@@ -36,8 +38,8 @@ body {
 }
 
 /* Header */
-.site-header {
 
+.site-header {
   text-align: center;
   display: flex;
   align-items: center;
@@ -47,109 +49,113 @@ body {
   justify-content: space-between;
 
   border-bottom: 1px solid #393939
-
-  /*display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 1px;
-  background-color: #393939;
-  width: 100%;
-  margin: 0 auto;
-  
-  position: relative;
-  margin-top: 1rem; 
-  margin-bottom: 2rem; 
-  
-  opacity: 0.5;
-  border: none;
-
-
-  padding: 60px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-  font-size: 30px;*/
 }
 
 .site-header nav ul {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(4vw, 4vw, 1vw);
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .site-header a {
   font-size: 12px;
   letter-spacing: 1px;
-  color: white;
+  color: #919191;
   text-decoration: none;
-  order: 1;
+  transition: color 0.3s ease;
 }
-/*
-.logo img {
-  height: 40px;
-  width: auto;
-  display: block;
-  order: 2;
-}*/
 
-.logo img {
+.site-header a:hover {
+  color: white;
+}
+
+.logo { 
   height: 60px;
-  fill: white;
-  stroke: white;
-  order: 2;
+  width: 60px;
+  position: relative;
+  margin: 6px 0;
 }
 
-.white-icon {
+.normal-logo, .hovered-logo {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  border-radius: 4px;
+  
+  transition: mask 0.3s ease, transform 0.3s ease;
+}
+
+.normal-logo {
   filter: brightness(0) invert(1);
+
+  mask: linear-gradient(135deg, black 40%, black 60%, transparent 50%);
+  mask-size: 370% 100%;
+  mask-position: left;
 }
 
-/* Main */
-main {
-  padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+.hovered-logo {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  filter: none;
+
+  mask: linear-gradient(135deg, transparent 50%, black 60%, black 40%);
+  mask-size: 370% 100%;
+  mask-position: left;
+}
+
+.logo:hover .normal-logo,
+.logo:hover .hovered-logo {
+  transform: scale(1.1);
+  mask-position: right;
 }
 
 /* Name Animation */
 
 .name-card {
-  margin: 4rem auto;
   border: 2px solid white !important;
+  margin: 4rem auto;
+
+  position: relative;
+  width: 100%;
   height: 20em;
 }
 
 #name-solid {
+  position: absolute;
   border: 2px solid white !important;
-  margin: 0 15vw;
   color: white;
 
-  width: 85vw;
-  height: 1em;
   font-size: clamp(2.5rem, 7vw, 10rem);
-  text-align: left;
+
+  display: inline-block;
+  right: 50%;
+  left: 13%;
+
+  transition: mask 0.8s cubic-bezier(.01,.75,.17,.99);
+  mask: linear-gradient(90deg, black 50%, transparent 50%);
+  mask-size: 200% 100%;
+  mask-position: right;
 }
 
-#name-solid.hidden {
-  display: none;
+#name-solid.active {
+  mask-position: left;
 }
 
 #typewriter {
-  margin: 0 15vw;
+  position: absolute;
+  border: 2px solid white !important;
   color: #ffffff;
 
-  width: 85vw;
-  height: 1em;
-  border: 2px solid white !important;
+  display: inline-block;
+  right: 50%;
+  left: 13%;
 
   font-size: clamp(2.5rem, 5vw, 10rem);
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 
   text-align: left;
+  text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
 }
 
 #typewriter.hidden {
@@ -160,7 +166,8 @@ main {
   font-weight: 100;
   color: white;
   position: relative;
-  animation: none !important; 
+  animation: none !important;
+  box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
 }
 
 .ti-cursor.vim-normal {
@@ -178,7 +185,7 @@ main {
 .ti-cursor.vim-command {
   position: absolute;
   opacity: 1 !important;
-  margin-left: 0.4em; 
+  margin-left: 0.3em; 
   width: 0.6em !important;
   margin-top: 0.15em;
   mix-blend-mode: difference;
@@ -195,9 +202,16 @@ main {
   margin-top: 1.10em;
   border-bottom: 0.15em solid white !important;
   animation: none !important;
+}
 
-.introduction {
-  
+#introduction {
+  border: 2px solid white !important;
+  color: white;
+
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  right: 13%;
 }
 
 .site-footer {

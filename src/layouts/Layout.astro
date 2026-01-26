@@ -17,9 +17,16 @@ import TypeIt from 'typeit';
 
     <header class="site-header gravity">
       <div class="logo">
-        <a href="/">
-          <img src="/images/logo.svg" alt="LP Website" class="white-icon"/>
-        </a>
+        <div class="normal-logo">
+          <a href="/">
+            <img src="/images/logo.svg" alt="LP Website"/>
+          </a>
+        </div>
+        <div class="hovered-logo">
+          <a href="/">
+            <img src="/images/logo.svg" alt="LP Website"/>
+          </a>
+        </div>
       </div>
 
       <nav>
@@ -34,15 +41,36 @@ import TypeIt from 'typeit';
 
     <div class="name-card">
       <div id="typewriter", class="hidden", center="true"></div>
-      <div id="name-solid", class="hidden italiana-regular">Luca Paliska</div>
-      <div id="introduction"></div>
+      <div id="name-solid", class="italiana-regular">Luca Paliska</div>
+      <div id="introduction">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
+      <div id="socials"></div>
     </div>
 
     <script>
       import TypeIt from 'typeit';
-      document.getElementById("typewriter").classList.toggle("hidden");
 
-      new TypeIt("#typewriter", { speed: 50 })
+      // Weird animation parameter to keep cursor from blinking like in vim (single frame with opacity 1)
+      new TypeIt("#typewriter", { speed: 50, cursor: { animation: { frames: [ {opacity: 1 }]}} })
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          document.getElementById("typewriter").classList.toggle("hidden");
+          if (cursor) {
+            cursor.textContent = "";
+            cursor.classList.add('vim-command');
+          }
+        })
+        .pause(120)
+
+        .exec((instance) => {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) {
+            cursor.textContent = "|";
+            cursor.classList.remove('vim-command');
+          }
+        })
+        .pause(120)
+
         .type("luca paliska")
         .pause(100)
 
@@ -127,7 +155,7 @@ import TypeIt from 'typeit';
             cursor.classList.remove('vim-command');
           }
           console.log('bruh');
-          document.getElementById("name-solid").classList.toggle("hidden");
+          document.getElementById("name-solid").classList.toggle("active");
           document.getElementById("typewriter").classList.toggle("hidden");
         })
 
