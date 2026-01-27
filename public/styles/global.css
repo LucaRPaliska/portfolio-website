@@ -19,8 +19,31 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 .gravity {
   font-family: 'gravity', sans-serif;
+}
+
+@font-face {
+  font-family: 'logos';
+  src: url('/fonts/icomoon/fonts/icomoon.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+.scratch:before {
+  content: "\e900";
+  font-family: 'logos';
+  font-style: normal;
+  font-weight: normal;
+}
+
+.devpost:before {
+  content: "\e903";
+  font-family: 'logos';
+  font-style: normal;
+  font-weight: normal;
 }
 
 .montserrat-light {
@@ -62,11 +85,12 @@ body {
   letter-spacing: 1px;
   color: #919191;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease, text-shadow 0.3s ease;
 }
 
 .site-header a:hover {
   color: white;
+  text-shadow: 0 0 1px #ffffff, 0 0 3px #d0d0d0, 0 0 5px #525252;
 }
 
 .logo { 
@@ -113,7 +137,7 @@ body {
 /* Name Animation */
 
 .intro-container {
-  border: 2px solid white !important;
+  border: 1px solid white !important;
 
   margin: 4rem auto 0;
 
@@ -123,7 +147,7 @@ body {
 }
 
 .name-card {
-  border: 2px solid white !important;
+  border: 1px solid white !important;
 
   position: relative;
   width: 100%;
@@ -132,7 +156,6 @@ body {
 
 #name-solid {
   position: absolute;
-  border: 2px solid white !important;
   color: white;
 
   font-size: clamp(4rem, 7vw, 7vw);
@@ -151,9 +174,10 @@ body {
   mask-position: left;
 }
 
-#typewriter {
+#typewriter-name {
+  border: 1px solid white !important;
+
   position: absolute;
-  border: 2px solid white !important;
   color: #ffffff;
 
   display: inline-block;
@@ -164,10 +188,10 @@ body {
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 
   text-align: left;
-  text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
+  /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
 
-#typewriter.hidden {
+#typewriter-name.hidden {
   display: none;
 }
 
@@ -176,7 +200,7 @@ body {
   color: white;
   position: relative;
   animation: none !important;
-  box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
+  /*box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
 
 .ti-cursor.vim-normal {
@@ -213,23 +237,51 @@ body {
   animation: none !important;
 }
 
-#introduction {
-  border: 2px solid white !important;
+#typewriter-intro {
+  border: 1px solid white !important;
+
   color: white;
 
   position: absolute;
   display: inline-block;
   left: 50%;
   right: 0%;
+  margin-top: 10px;
 
-  font-size: 30px;
+  font-size: 1vw;
+  padding: 10px;
+  /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
+}
+
+#typewriter-intro.hidden {
+  display: none;
+}
+
+#introduction {
+  border: 1px solid white !important;
+
+  color: white;
+
+  position: absolute;
+  display: none;
+  left: 50%;
+  right: 0%;
+  margin-top: 10px;
+
+  font-size: 1vw;
+  padding: 10px;
+  /*text-shadow: 0 0 1px #ffffff, 0 0 2px #d0d0d0;*/
+}
+
+#introduction.active {
+  display: inline-block;
 }
 
 #socials{
-  border: 2px solid white !important;
+  border: 1px solid white !important;
 
-  width: 40%;
-  margin-left: 5%;
+  width: 30%;
+  margin-left: 18%;
   height: 10em;
 
   position: relative;
@@ -239,17 +291,17 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: right;
   gap: 10px;
   list-style: none;
 }
 
 .social-button {
-  border: 1px solid white !important;
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-flex;
 
-  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+  font-family: Arial, sans-serif;
 
   padding: 5px 10px;
   color: white;
@@ -262,18 +314,37 @@ body {
 }
 
 .social-button i {
-  font-size: 25px;
+  position: relative;
+  font-size: clamp(15px, 1vw, 1vw);
   width: 25px;
+  display: inline-flex;
+  line-height: 1;
+  justify-content: center;
 }
 
 .social-button .button-text {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: clamp(12px, 0.8vw, 0.8vw);
+  font-weight: 400;
+  padding: 4px;
 }
 
 .social-button:hover {
   box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
   text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
+}
+
+.devpost-logo {
+  height: clamp(15px, 1vw, 1vw);
+  width: clamp(15px, 1vw, 1vw);
+  margin: 0 2px 0 0;
+  filter: invert(1);
+}
+
+.scratch-logo {
+  height: clamp(15px, 1vw, 1vw);
+  width: clamp(15px, 1vw, 1vw);
+  margin: 0 2px 0 0;
+  filter: grayscale(100%);
 }
 
 .social-button:hover .devpost-logo {
@@ -288,20 +359,6 @@ body {
           drop-shadow(0 0 5px #d0d0d0)
           drop-shadow(0 0 10px #525252)
           grayscale(100%);
-}
-
-.devpost-logo {
-  height: 18px;
-  width: 18px;
-  margin: 0 2px 0 0;
-  filter: invert(1);
-}
-
-.scratch-logo {
-  height: 18px;
-  width: 18px;
-  margin: 0 2px 0 0;
-  filter: grayscale(100%);
 }
 
 .site-footer {

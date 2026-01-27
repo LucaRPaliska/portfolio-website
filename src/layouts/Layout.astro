@@ -1,6 +1,5 @@
 ---
 const { children } = Astro.props;
-import TypeIt from 'typeit';
 ---
 
 <!DOCTYPE html>
@@ -42,8 +41,9 @@ import TypeIt from 'typeit';
 
     <div class="intro-container">
       <div class="name-card">
-        <div id="typewriter", class="hidden", center="true"></div>
+        <div id="typewriter-name", class="hidden", center="true"></div>
         <div id="name-solid", class="italiana-regular">Luca Paliska</div>
+        <div id="typewriter-intro", class="hidden", center="true"></div>
         <div id="introduction" class="gravity">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
       </div>
       <div id="socials">
@@ -51,151 +51,35 @@ import TypeIt from 'typeit';
           <ul>
             <li><a href="https://x.com/LucaRPaliska" class="social-button">
               <i class="fab fa-twitter icon"></i>
-              <span class="button-text">twitter</span>
+              <span class="button-text">LucaRPaliska</span>
             </a></li>
             <li><a href="https://github.com/LucaRPaliska" class="social-button">
               <i class="fab fa-github icon"></i>
-              <span class="button-text">github</span>
+              <span class="button-text">LucaRPaliska</span>
             </a></li>
             <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button">
               <i class="fab fa-linkedin icon"></i>
-              <span class="button-text">linkedin</span>
+              <span class="button-text">luca-paliska</span>
             </a></li>
             <li><a href="https://devpost.com/lucarpaliska" class="social-button">
-              <img src="/images/devpost.svg" alt="Devpost Logo" class="devpost-logo"/>
-              <span class="button-text">devpost</span>
+              <i class="logos devpost"></i>
+              <span class="button-text">lucarpaliska</span>
             </a></li>
             <li><a href="lucarpaliska@gmail.com" class="social-button">
               <i class="fa-solid fa-envelope icon"></i>
-              <span class="button-text">email</span>
+              <span class="button-text">@gmail.com</span>
             </a></li>
             <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button">
-              <img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>
-              <span class="button-text">scratch</span>
+                <!--<img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>-->
+              <i class="logos scratch"></i>
+              <span class="button-text">lol1859</span>
             </a></li>
           </ul>
         </nav>
       </div>
     </div>
 
-    <script>
-      import TypeIt from 'typeit';
-
-      // Weird animation parameter to keep cursor from blinking like in vim (single frame with opacity 1)
-      new TypeIt("#typewriter", { speed: 50, cursor: { animation: { frames: [ {opacity: 1 }]}} })
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          document.getElementById("typewriter").classList.toggle("hidden");
-          if (cursor) {
-            cursor.textContent = "";
-            cursor.classList.add('vim-command');
-          }
-        })
-        .pause(120)
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.textContent = "|";
-            cursor.classList.remove('vim-command');
-          }
-        })
-        .pause(120)
-
-        .type("luca paliska")
-        .pause(100)
-
-        // TODO: / CURRENTLY WORKING ON: Adding introduction paragraph and then other platform navigation
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.textContent = "";
-            cursor.classList.add('vim-normal');
-          }
-        })
-        .pause(380)
-
-        .move(-6, { instant: true }) 
-        .pause(190)
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) { // TODO: check if this if statement is 
-            // needed or if these funcs are compactable in any way.
-            cursor.classList.remove('vim-normal');
-            cursor.classList.add('vim-replace');
-          }
-        })
-        .pause(110)
-
-        .delete(1, {instant: true})
-        .type('P', {instant: true})
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.classList.add('vim-normal');
-            cursor.classList.remove('vim-replace');
-          }
-        })
-        .pause(170)
-
-        .move(-5, { instant: true }) 
-        .pause(170)
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.classList.remove('vim-normal');
-            cursor.classList.add('vim-replace');
-          }
-        })
-        .pause(110)
-
-        .delete(1, {instant: true})
-        .type('L', {instant: true})
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.textContent = "";
-            cursor.classList.add('vim-normal');
-            cursor.classList.remove('vim-replace');
-          }
-        })
-        .pause(190)
-
-
-        .exec((instance) => {
-          const cursor = instance.element.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.textContent = "";
-            cursor.classList.remove('vim-normal');
-            cursor.classList.add('vim-command');
-          }
-        })
-        .move(11, { instant: true }) 
-        .type('<br> :', { instant: true })
-        .type('wq')
-        .pause(100)
-        .delete(3, {instant: true})
-
-        .exec(() => {
-          const cursor = document.querySelector('.ti-cursor');
-          if (cursor) {
-            cursor.style.opacity = '0';
-            cursor.classList.remove('vim-command');
-          }
-          console.log('bruh');
-          document.getElementById("name-solid").classList.toggle("active");
-          document.getElementById("typewriter").classList.toggle("hidden");
-        })
-
-        .go();
-
-      // TODO: Move these to seperate files and modulate all typeit stuff.
-
-    </script>
+    <script src="../scripts/typeit-vim.js"></script>
 
     <footer class="site-footer">
       &copy; 2026 Luca
