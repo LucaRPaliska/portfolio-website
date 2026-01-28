@@ -42,47 +42,67 @@ const { children } = Astro.props;
     <div class="intro-container">
       <div class="name-card">
         <div id="typewriter-name", class="hidden", center="true"></div>
-        <div id="name-solid", class="italiana-regular">Luca Paliska</div>
+        <div id="name-solid", class="italiana-regular hidden-mask">Luca Paliska</div>
+      </div>
+
+      <div class="pfp-card">
+        <div class="picture">
+          <!--<div id="pfp", class="hidden hidden-mask" data-tilt data-tilt-max="10" data-tilt-reverse="true" data-tilt-transition="true" data-tilt-full-page-listening="true" data-tilt-transform-style="preserve-3d">-->
+          <div id="pfp" class="hidden hidden-mask" data-tilt>
+            <img src="/images/pfp.jpg" class="pfp-3d"></img>
+          </div>
+          <div id="ascii-pfp", class="hidden"></div>
+          <div id="typewriter-pfp", class="hidden"></div>
+        </div>
+      </div>
+
+      <div class="name-card">
         <div id="typewriter-intro", class="hidden", center="true"></div>
-        <div id="introduction" class="gravity">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
+        <div id="introduction" class="gravity hidden-mask">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
       </div>
-      <div id="socials">
-        <nav>
-          <ul>
-            <li><a href="https://x.com/LucaRPaliska" class="social-button">
-              <i class="fab fa-twitter icon"></i>
-              <span class="button-text">LucaRPaliska</span>
-            </a></li>
-            <li><a href="https://github.com/LucaRPaliska" class="social-button">
-              <i class="fab fa-github icon"></i>
-              <span class="button-text">LucaRPaliska</span>
-            </a></li>
-            <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button">
-              <i class="fab fa-linkedin icon"></i>
-              <span class="button-text">luca-paliska</span>
-            </a></li>
-            <li><a href="https://devpost.com/lucarpaliska" class="social-button">
-              <i class="logos devpost"></i>
-              <span class="button-text">lucarpaliska</span>
-            </a></li>
-            <li><a href="lucarpaliska@gmail.com" class="social-button">
-              <i class="fa-solid fa-envelope icon"></i>
-              <span class="button-text">@gmail.com</span>
-            </a></li>
-            <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button">
-                <!--<img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>-->
-              <i class="logos scratch"></i>
-              <span class="button-text">lol1859</span>
-            </a></li>
-          </ul>
-        </nav>
+      <div class="name-card">
+        <div id="typewriter-socials", class="hidden"></div>
+        <div id="socials", class="hidden-mask">
+          <nav>
+            <ul>
+              <li><a href="https://x.com/LucaRPaliska" class="social-button">
+                <i class="fab fa-twitter icon"></i>
+                <span class="button-text">LucaRPaliska</span>
+              </a></li>
+              <li><a href="https://github.com/LucaRPaliska" class="social-button">
+                <i class="fab fa-github icon"></i>
+                <span class="button-text">LucaRPaliska</span>
+              </a></li>
+              <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button">
+                <i class="fab fa-linkedin icon"></i>
+                <span class="button-text">luca-paliska</span>
+              </a></li>
+              <li><a href="https://devpost.com/lucarpaliska" class="social-button">
+                <i class="logos devpost"></i>
+                <span class="button-text">lucarpaliska</span>
+              </a></li>
+              <li><a href="lucarpaliska@gmail.com" class="social-button">
+                <i class="fa-solid fa-envelope icon"></i>
+                <span class="button-text">@gmail.com</span>
+              </a></li>
+              <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button">
+                  <!--<img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>-->
+                <i class="logos scratch"></i>
+                <span class="button-text">lol1859</span>
+              </a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
+      <div id="typewriter-wq", class="hidden"></div>
     </div>
 
     <script src="../scripts/typeit-vim.js"></script>
+    <script src="../scripts/vanilla-tilt.js"></script>
 
     <footer class="site-footer">
       &copy; 2026 Luca
     </footer>
+
   </body>
 </html>

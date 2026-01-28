@@ -66,7 +66,7 @@ body {
   text-align: center;
   display: flex;
   align-items: center;
-  padding: 5px 20px;
+  padding: 8px 20px;
   margin: 0 20px;
 
   justify-content: space-between;
@@ -76,12 +76,12 @@ body {
 
 .site-header nav ul {
   display: flex;
-  gap: clamp(4vw, 4vw, 1vw);
+  gap: clamp(1vw, 5vw, 5vw);
   list-style: none;
 }
 
 .site-header a {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: #919191;
   text-decoration: none;
@@ -136,21 +136,66 @@ body {
 
 /* Name Animation */
 
-.intro-container {
-  border: 1px solid white !important;
 
+#name-solid,
+#introduction,
+#pfp,
+#socials {
+  transition: mask 0.8s cubic-bezier(.01,.75,.17,.99);
+  mask: linear-gradient(90deg, black 50%, transparent 50%);
+  mask-size: 200% 100%;
+  mask-position: left;
+}
+
+#name-solid.hidden-mask,
+#introduction.hidden-mask,
+#pfp.hidden-mask,
+#socials.hidden-mask{
+  mask-position: right;
+}
+
+/* Debugging Boxes */
+.intro-container,
+.name-card,
+#typewriter-name,
+#typewriter-intro,
+#introduction,
+#socials,
+.picture {
+  /*border: 1px solid white !important;*/
+}
+
+#typewriter-name,
+#typewriter-wq,
+#typewriter-intro,
+#typewriter-socials,
+#typewriter-pfp,
+#ascii-pfp {
+  border: 1px solid white !important;
+  /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252 !important;*/
+}
+
+.ti-cursor{
+  /*box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
+  text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
+}
+
+/*#typewriter-wq {
+  width: 20vw;
+  border: 1px solid white !important;
+}*/
+
+.intro-container {
   margin: 4rem auto 0;
 
   position: relative;
-  width: 74%;
+  width: 60%;
   height: 30rem;
 }
 
 .name-card {
-  border: 1px solid white !important;
-
+  width: 37vw;
   position: relative;
-  width: 100%;
   height: clamp(2.5rem, 8.5vw, 8.5vw);
 }
 
@@ -161,38 +206,74 @@ body {
   font-size: clamp(4rem, 7vw, 7vw);
 
   display: inline-block;
-  right: 50%;
-  left: 0%;
 
-  transition: mask 0.8s cubic-bezier(.01,.75,.17,.99);
-  mask: linear-gradient(90deg, black 50%, transparent 50%);
-  mask-size: 200% 100%;
-  mask-position: right;
 }
 
-#name-solid.active {
-  mask-position: left;
+#typewriter-wq {
+  position: absolute;
+  color: white;
+
+  font-size: clamp(4rem, 7vw, 7vw);
+
+  display: inline-block;
 }
 
 #typewriter-name {
-  border: 1px solid white !important;
-
-  position: absolute;
   color: #ffffff;
 
-  display: inline-block;
-  right: 50%;
-  left: 0%;
 
   font-size: clamp(2.5rem, 5vw, 10rem);
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 
   text-align: left;
-  /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
 
-#typewriter-name.hidden {
-  display: none;
+.picture {
+  position: absolute;
+  top: 0%;
+  left: 62%;
+
+  color: white;
+  padding: 20px;
+}
+
+#pfp {
+  width: 22vw;
+  height: 22vw;
+  background-color: white;
+  border-radius: 4vw;
+  float: right;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+  transform: perspective(1000px);
+  transform-style: preserve-3d;
+}
+
+.pfp-3d {
+  width: 20vw;
+  height: auto;
+  border-radius: 4vw;
+  float: right;
+
+  transform: translateZ(50px);
+}
+
+#typewriter-pfp {
+  color: white;
+  
+  font-size: 1vw;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+}
+
+#ascii-pfp{
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.1;
+  color: white;
+  font-size: 4px;
+  white-space: pre;
 }
 
 .ti-cursor {
@@ -200,7 +281,6 @@ body {
   color: white;
   position: relative;
   animation: none !important;
-  /*box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
 
 .ti-cursor.vim-normal {
@@ -238,60 +318,43 @@ body {
 }
 
 #typewriter-intro {
-  border: 1px solid white !important;
-
   color: white;
-
-  position: absolute;
-  display: inline-block;
-  left: 50%;
-  right: 0%;
-  margin-top: 10px;
-
   font-size: 1vw;
   padding: 10px;
-  /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
-}
-
-#typewriter-intro.hidden {
-  display: none;
 }
 
 #introduction {
-  border: 1px solid white !important;
-
   color: white;
 
-  position: absolute;
-  display: none;
-  left: 50%;
-  right: 0%;
-  margin-top: 10px;
+  display: inline-block;
 
   font-size: 1vw;
   padding: 10px;
-  /*text-shadow: 0 0 1px #ffffff, 0 0 2px #d0d0d0;*/
-}
 
-#introduction.active {
-  display: inline-block;
+}
+.hidden {
+  display: none !important;
 }
 
 #socials{
-  border: 1px solid white !important;
-
-  width: 30%;
-  margin-left: 18%;
+  padding: 15px;
   height: 10em;
 
   position: relative;
+}
+
+#typewriter-socials{
+  color: white;
+  padding: 10px;
+  font-size: 1vw;
+  white-space: pre;
 }
 
 #socials nav ul {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: right;
+  justify-content: left;
   gap: 10px;
   list-style: none;
 }
