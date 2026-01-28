@@ -76,8 +76,8 @@ function pfpAnimation() {
 
     .exec((instance) => { 
       cursorChange(instance, "vim-command", ""); 
-      document.getElementById("test").classList.toggle("hidden");
-      document.getElementById("test").classList.toggle("invisible");
+      document.getElementById("pfp-3d").classList.toggle("hidden");
+      document.getElementById("pfp-3d").classList.toggle("invisible");
       document.getElementById("typewriter-pfp").classList.toggle("hidden");
     })
     .pause(120)
@@ -237,8 +237,18 @@ function wqAnimation() {
       document.getElementById("typewriter-wq").classList.toggle("hidden");
 
       document.getElementById("name-solid").classList.toggle("hidden-mask");
-      document.getElementById("test").classList.toggle("hidden");
-      document.getElementById("test").style.transform = 'rotateX(0deg) rotateY(0deg)'; // TODO: Working on having a tilt "flick" from loading
+
+      document.getElementById("pfp-3d").classList.toggle("hidden");
+      VanillaTilt.init(document.getElementById("pfp-3d"), {
+        startX: -15,
+        startY: -5,
+        reverse: "true",
+        max: 20,
+        easing: "cubic-bezier(.03,.98,.52,.99)",
+        speed: 1000,
+        "glare-prerender": false
+      });
+      //document.getElementById("pfp-3d").style.transform = 'rotateX(0deg) rotateY(0deg)'; // TODO: Working on having a tilt "flick" from loading
       document.getElementById("introduction").classList.toggle("hidden-mask");
       document.getElementById("socials").classList.toggle("hidden-mask");
     })
