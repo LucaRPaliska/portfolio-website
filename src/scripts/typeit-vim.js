@@ -76,6 +76,8 @@ function pfpAnimation() {
 
     .exec((instance) => { 
       cursorChange(instance, "vim-command", ""); 
+      document.getElementById("test").classList.toggle("hidden");
+      document.getElementById("test").classList.toggle("invisible");
       document.getElementById("typewriter-pfp").classList.toggle("hidden");
     })
     .pause(120)
@@ -94,7 +96,6 @@ function pfpAnimation() {
       const cursor = instance.element.querySelector('.ti-cursor');
       cursor.style.opacity = '0';
       cursorChange(instance, "", "");
-      document.getElementById("pfp").classList.toggle("hidden");
       document.getElementById("ascii-pfp").classList.toggle("hidden");
       document.getElementById("typewriter-pfp").classList.toggle("hidden");
     })
@@ -229,15 +230,17 @@ function wqAnimation() {
       const cursor = instance.element.querySelector('.ti-cursor');
       cursor.style.opacity = '0';
       cursorChange(instance, "", "");
-      document.getElementById("name-solid").classList.toggle("hidden-mask");
       document.getElementById("typewriter-name").classList.toggle("hidden");
-      document.getElementById("introduction").classList.toggle("hidden-mask");
       document.getElementById("typewriter-intro").classList.toggle("hidden");
-      document.getElementById("pfp").classList.toggle("hidden-mask");
       document.getElementById("ascii-pfp").classList.toggle("hidden");
-      document.getElementById("socials").classList.toggle("hidden-mask");
       document.getElementById("typewriter-socials").classList.toggle("hidden");
       document.getElementById("typewriter-wq").classList.toggle("hidden");
+
+      document.getElementById("name-solid").classList.toggle("hidden-mask");
+      document.getElementById("test").classList.toggle("hidden");
+      document.getElementById("test").style.transform = 'rotateX(0deg) rotateY(0deg)'; // TODO: Working on having a tilt "flick" from loading
+      document.getElementById("introduction").classList.toggle("hidden-mask");
+      document.getElementById("socials").classList.toggle("hidden-mask");
     })
 
     .go();

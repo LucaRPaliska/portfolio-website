@@ -39,17 +39,23 @@ const { children } = Astro.props;
       </nav>
     </header>
 
+    <div id="container">
+      <div id="my3dElement" class="masked">3D Element</div>
+    </div>
+
     <div class="intro-container">
+
       <div class="name-card">
         <div id="typewriter-name", class="hidden", center="true"></div>
         <div id="name-solid", class="italiana-regular hidden-mask">Luca Paliska</div>
       </div>
 
-      <div class="pfp-card">
-        <div class="picture">
-          <!--<div id="pfp", class="hidden hidden-mask" data-tilt data-tilt-max="10" data-tilt-reverse="true" data-tilt-transition="true" data-tilt-full-page-listening="true" data-tilt-transform-style="preserve-3d">-->
-          <div id="pfp" class="hidden hidden-mask" data-tilt>
-            <img src="/images/pfp.jpg" class="pfp-3d"></img>
+      <div id="pfp-card" class="">
+
+        <div class="bigtest">
+          <div id="test" class="invisible" data-tilt data-tilt-reverse="true" data-tilt-max="10" data-tilt-startX="-20" data-tilt-startY="-3" data-tilt-reset-to-start="true">
+
+            <img src="/images/pfp.jpg" class="lilguy"></img>
           </div>
           <div id="ascii-pfp", class="hidden"></div>
           <div id="typewriter-pfp", class="hidden"></div>

@@ -139,17 +139,15 @@ body {
 
 #name-solid,
 #introduction,
-#pfp,
 #socials {
   transition: mask 0.8s cubic-bezier(.01,.75,.17,.99);
-  mask: linear-gradient(90deg, black 50%, transparent 50%);
+  mask-image: linear-gradient(90deg, black 50%, transparent 50%);
   mask-size: 200% 100%;
   mask-position: left;
 }
 
 #name-solid.hidden-mask,
 #introduction.hidden-mask,
-#pfp.hidden-mask,
 #socials.hidden-mask{
   mask-position: right;
 }
@@ -180,10 +178,10 @@ body {
   text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
 
-/*#typewriter-wq {
+#typewriter-wq {
   width: 20vw;
   border: 1px solid white !important;
-}*/
+}
 
 .intro-container {
   margin: 4rem auto 0;
@@ -227,8 +225,11 @@ body {
 
   text-align: left;
 }
+#container {
+  perspective: 1000px;
+}
 
-.picture {
+.bigtest {
   position: absolute;
   top: 0%;
   left: 62%;
@@ -236,29 +237,40 @@ body {
   color: white;
   padding: 20px;
 }
-
-#pfp {
+#test {
   width: 22vw;
   height: 22vw;
   background-color: white;
   border-radius: 4vw;
-  float: right;
-  border: 3px solid white;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
 
-  transform: perspective(1000px);
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3D setup */
   transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+.invisible {
+  opacity: 0;
 }
 
-.pfp-3d {
+#test .lilguy {
   width: 20vw;
-  height: auto;
+  height: 20vw;
+  background: white;
   border-radius: 4vw;
-  float: right;
+  float:right;
 
   transform: translateZ(50px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 #typewriter-pfp {
@@ -271,8 +283,9 @@ body {
 #ascii-pfp{
   font-family: 'Courier New', Courier, monospace;
   line-height: 1.1;
+  margin-left: 6px;
   color: white;
-  font-size: 4px;
+  font-size: 3px;
   white-space: pre;
 }
 
