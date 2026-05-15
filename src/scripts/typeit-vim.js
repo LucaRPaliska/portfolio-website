@@ -58,7 +58,10 @@ function nameAnimation() {
 
     .delete(1, {instant: true})
     .type('L', {instant: true})
-    .exec((instance) => { cursorChange(instance, "vim-normal", ""); })
+    .exec((instance) => { 
+      cursorChange(instance, "vim-normal", "");
+      wqAnimation();
+    })
     .pause(150)
 
     .exec((instance) => {
@@ -213,9 +216,8 @@ function socialsAnimation() {
 }
 
 function wqAnimation() {
-  new TypeIt("#typewriter-wq", { speed: 40, cursor: { animation: { frames: [ {opacity: 1 }]}} })
+  new TypeIt("#typewriter-wq", { speed: 30, cursor: { animation: { frames: [ {opacity: 1 }]}} })
 
-    .pause(2500)
     .exec((instance) => { 
       cursorChange(instance, "vim-command", ""); 
       document.getElementById("typewriter-wq").classList.toggle("hidden");
@@ -258,9 +260,8 @@ function wqAnimation() {
 
 (function init(){
   introAnimation();
-  nameAnimation();
+  nameAnimation(); // wq is called in here
   pfpAnimation();
   socialsAnimation();
   ascii_profile_load();
-  wqAnimation();
 })();
