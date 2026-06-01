@@ -95,20 +95,13 @@ function pfpAnimation() {
     .exec((instance) => { cursorChange(instance, "vim-normal", ""); })
     .pause(170)
 
-    .exec((instance) => { 
+    .exec((instance) => {
       const cursor = instance.element.querySelector('.ti-cursor');
       cursor.style.opacity = '0';
       cursorChange(instance, "", "");
       document.getElementById("ascii-pfp").classList.toggle("hidden");
       document.getElementById("typewriter-pfp").classList.toggle("hidden");
     })
-  
-    /*.pause(200)
-
-    .exec((instance) => {
-      document.getElementById("pfp").classList.toggle("hidden");
-      document.getElementById("ascii-pfp").classList.toggle("hidden");
-    })*/
 
     .go();
 }
@@ -148,7 +141,6 @@ function introAnimation() {
       const cursor = instance.element.querySelector('.ti-cursor');
       cursor.style.opacity = '0';
       cursorChange(instance, "", "");
-      //nameAnimation();
     })
 
     .go();
@@ -250,7 +242,6 @@ function wqAnimation() {
         speed: 1000,
         "glare-prerender": false
       });
-      //document.getElementById("pfp-3d").style.transform = 'rotateX(0deg) rotateY(0deg)'; // TODO: Working on having a tilt "flick" from loading
       document.getElementById("introduction").classList.toggle("hidden-mask");
       document.getElementById("socials").classList.toggle("hidden-mask");
     })

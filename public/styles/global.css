@@ -567,7 +567,6 @@ body {
 .project-title-row {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
 }
 
 .project-date {
@@ -620,13 +619,6 @@ body {
   margin: 4rem auto;
 }
 
-.blog-list-heading {
-  color: white;
-  font-size: clamp(1.5rem, 3vw, 3vw);
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #393939;
-  padding-bottom: 0.75rem;
-}
 
 .blog-list {
   list-style: none;
@@ -649,27 +641,23 @@ body {
 
 .blog-list-title {
   color: #666;
-  font-family: 'gravity', sans-serif;
-  font-size: clamp(0.75rem, 0.9vw, 0.9vw);
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+  font-size: max(0.75rem, 0.9vw);
   transition: color 0.2s ease;
+  position: relative;
 }
 
 .blog-list-link:hover .blog-list-title {
   color: #aaa;
 }
 
+
 .blog-list-date {
   color: #555;
-  font-family: Arial, sans-serif;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
   font-size: 0.75vw;
   white-space: nowrap;
-}
-
-.blog-list-desc {
-  color: #555;
-  font-family: 'gravity', sans-serif;
-  font-size: 0.85vw;
-  margin-top: 0.35rem;
+  position: relative;
 }
 
 /* Blog post */

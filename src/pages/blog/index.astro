@@ -20,11 +20,58 @@ function slug(entry: typeof posts[0]) {
       {sorted.map(post => (
         <li class="blog-list-item">
           <a href={`/blog/${slug(post)}`} class="blog-list-link">
-            <span class="blog-list-title">{post.data.title}</span>
-            <span class="blog-list-date">{formatDate(post.data.date)}</span>
+            <span class="blog-list-title" data-title={post.data.title}></span>
+            <span class="blog-list-date" data-date={formatDate(post.data.date)}></span>
           </a>
         </li>
       ))}
     </ul>
   </div>
 </BlogLayout>
+
+<script>
+import TypeIt from 'typeit';
+
+function measureWidth(text: string, el: HTMLElement): number {
+  const style = window.getComputedStyle(el);
+  const ghost = document.createElement('span');
+  ghost.style.cssText = `visibility:hidden;position:fixed;white-space:nowrap;font-family:${style.fontFamily};font-size:${style.fontSize}`;
+  ghost.textContent = text;
+  document.body.appendChild(ghost);
+  const w = ghost.offsetWidth;
+  ghost.remove();
+  return w;
+}
+
+function typeInto(el: HTMLElement, text: string, removeCursor: boolean): Promise<void> {
+  return new Promise((resolve) => {
+    new TypeIt(el, {
+      speed: 20,
+      afterComplete: () => resolve(),
+    })
+      .type(text)
+      .exec((instance: any) => {
+        if (removeCursor) {
+          const cursor = instance.element.querySelector('.ti-cursor');
+          if (cursor) cursor.remove();
+        }
+      })
+      .go();
+  });
+}
+
+const items = [...document.querySelectorAll<HTMLElement>('.blog-list-item')];
+
+Promise.all(items.map(async (item) => {
+  const titleEl = item.querySelector<HTMLElement>('.blog-list-title');
+  const dateEl  = item.querySelector<HTMLElement>('.blog-list-date');
+  if (!titleEl || !dateEl) return;
+
+  const date = dateEl.dataset.date ?? '';
+  dateEl.style.width      = measureWidth(date, dateEl) + 'px';
+  dateEl.style.flexShrink = '0';
+
+  await typeInto(titleEl, titleEl.dataset.title ?? '', true);
+  await typeInto(dateEl, date, true);
+}));
+</script>
