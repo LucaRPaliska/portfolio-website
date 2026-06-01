@@ -15,6 +15,7 @@ const { children } = Astro.props;
   </head>
   <body>
 
+    <div class="welcome-area">
     <header class="site-header gravity">
       <div class="logo">
         <div class="normal-logo">
@@ -39,7 +40,7 @@ const { children } = Astro.props;
     </header>
 
     <div id="container">
-      <div id="my3dElement" class="masked">3D Element</div>
+      <div id="my3dElement" class="masked"></div>
     </div>
 
     <!-- TODO: To make phone-compatible in the future, have the animation and the final card be completely seperate divs. -->
@@ -105,9 +106,65 @@ const { children } = Astro.props;
       </div>
       <div id="typewriter-wq", class="hidden"></div>
     </div>
+    </div>
 
     <script src="../scripts/typeit-vim.js"></script>
     <script src="../scripts/vanilla-tilt.js"></script>
+    <script>
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.disconnect();
+        }
+      }, { threshold: 0.4 });
+      observer.observe(document.querySelector('.projects-wrapper'));
+    </script>
+
+    <div class="projects-wrapper">
+    <section class="projects-section">
+      <h2 class="projects-heading gravity">Projects</h2>
+
+      <div class="project-card">
+        <div class="project-image">
+          <img src="/images/desktop.png" alt="Project screenshot" />
+        </div>
+        <div class="project-info">
+          <div class="project-title-row">
+            <h3 class="project-title">NixOS Dotfiles</h3>
+            <span class="project-date">Jan 2025</span>
+          </div>
+          <p class="project-tags">
+            <span class="tag">OS</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Nvim</span>
+            <span class="tag">Dotfiles</span>
+          </p>
+          <p class="project-desc">My complete NixOS setup managed via flakes and home-manager, publicly available. </p>
+          <div class="project-links">
+            <a href="https://github.com/LucaRPaliska/nixos-config/tree/main" class="social-button"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <img src="/images/logo.jpg" alt="Project screenshot" />
+        </div>
+        <div class="project-info">
+          <div class="project-title-row">
+            <h3 class="project-title">Project Name</h3>
+            <span class="project-date">Mar 2025</span>
+          </div>
+          <p class="project-tags"><span class="tag">Python</span><span class="tag">Backend</span></p>
+          <p class="project-desc">Short description of what this project does, what problem it solves, and what you learned or built.</p>
+          <div class="project-links">
+            <a href="https://github.com/LucaRPaliska" class="social-button"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    </div>
 
     <footer class="site-footer">
       &copy; 2026 Luca

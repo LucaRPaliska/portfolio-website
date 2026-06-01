@@ -3,13 +3,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: none;
 }
 
-/* Fonts */ 
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fonts */
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0b0b0b;
+}
+
+.welcome-area {
   background-color: #161616;
+  border-radius: 0 0 4rem 4rem;
+  padding-bottom: calc(11rem);
 }
 
 @font-face {
@@ -93,21 +104,22 @@ body {
   text-shadow: 0 0 1px #ffffff, 0 0 3px #d0d0d0, 0 0 5px #525252;
 }
 
-.logo { 
+.logo {
   height: 60px;
   width: 60px;
   position: relative;
   margin: 6px 0;
 }
 
-.normal-logo, .hovered-logo {
+.normal-logo,
+.hovered-logo {
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   border-radius: 4px;
-  
+
   transition: mask 0.3s ease, transform 0.3s ease;
 }
 
@@ -139,7 +151,7 @@ body {
 #name-solid,
 #introduction,
 #socials {
-  transition: mask 0.8s cubic-bezier(.01,.75,.17,.99);
+  transition: mask 0.8s cubic-bezier(.01, .75, .17, .99);
   mask-image: linear-gradient(90deg, black 50%, transparent 50%);
   mask-size: 200% 100%;
   mask-position: left;
@@ -147,7 +159,7 @@ body {
 
 #name-solid.hidden-mask,
 #introduction.hidden-mask,
-#socials.hidden-mask{
+#socials.hidden-mask {
   mask-position: right;
 }
 
@@ -172,7 +184,7 @@ body {
   /*text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252 !important;*/
 }
 
-.ti-cursor{
+.ti-cursor {
   /*box-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;
   text-shadow: 0 0 2px #ffffff, 0 0 5px #d0d0d0, 0 0 10px #525252;*/
 }
@@ -187,7 +199,7 @@ body {
 
   position: relative;
   width: 60vw;
-  height: 30rem;
+  height: 26vw;
 }
 
 .name-card {
@@ -211,19 +223,22 @@ body {
   color: white;
 
   font-size: clamp(4rem, 7vw, 7vw);
+  padding: 12px 0;
 
   display: inline-block;
 }
 
 #typewriter-name {
+  position: absolute;
+  width: 100%;
   color: #ffffff;
-
 
   font-size: clamp(2.5rem, 5vw, 10rem);
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 
   text-align: left;
 }
+
 #container {
   perspective: 1000px;
 }
@@ -236,6 +251,7 @@ body {
   color: white;
   padding: 20px;
 }
+
 #pfp-3d {
   width: 22vw;
   height: 22vw;
@@ -257,7 +273,7 @@ body {
   height: 21vw;
   background: #d0d0d0;
   border-radius: 4vw;
-  float:right;
+  float: right;
 
   display: flex;
   align-items: center;
@@ -267,9 +283,10 @@ body {
   transform: perspective(1000px);
 
   transform: translateZ(20px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 
 }
+
 .invisible {
   opacity: 0;
 }
@@ -279,11 +296,11 @@ body {
   height: 20vw;
   background: white;
   border-radius: 4vw;
-  float:right;
+  float: right;
 
   transform: translateZ(30px);
   border: 1px solid white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 
   -webkit-font-smoothing: antialiased;
   backface-visibility: hidden;
@@ -294,12 +311,12 @@ body {
 
 #typewriter-pfp {
   color: white;
-  
+
   font-size: 1vw;
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 }
 
-#ascii-pfp{
+#ascii-pfp {
   font-family: 'Courier New', Courier, monospace;
   line-height: 1.1;
   margin-left: 6px;
@@ -318,25 +335,25 @@ body {
 .ti-cursor.vim-normal {
   position: absolute;
   opacity: 1 !important;
-  margin-left: -0.48em; 
+  margin-left: -0.48em;
   width: 0.6em !important;
   margin-top: 0.15em;
   mix-blend-mode: difference;
   border-top: 1.1em solid white !important;
   background-color: white;
-  animation: none !important; 
+  animation: none !important;
 }
 
 .ti-cursor.vim-command {
   position: absolute;
   opacity: 1 !important;
-  margin-left: 0.3em; 
+  margin-left: 0.3em;
   width: 0.6em !important;
   margin-top: 0.15em;
   mix-blend-mode: difference;
-  border-top: 1.1em solid white !important; 
+  border-top: 1.1em solid white !important;
   background-color: white;
-  animation: none !important; 
+  animation: none !important;
 }
 
 .ti-cursor.vim-replace {
@@ -350,12 +367,15 @@ body {
 }
 
 #typewriter-intro {
+  position: absolute;
+  width: 100%;
   color: white;
   font-size: 1vw;
   padding: 10px;
 }
 
 #introduction {
+  position: absolute;
   color: white;
 
   display: inline-block;
@@ -364,18 +384,21 @@ body {
   padding: 10px;
 
 }
+
 .hidden {
   display: none !important;
 }
 
-#socials{
+#socials {
   padding: 15px;
   height: 10em;
 
   position: relative;
 }
 
-#typewriter-socials{
+#typewriter-socials {
+  position: absolute;
+  width: 100%;
   color: white;
   padding: 10px;
   font-size: 1vw;
@@ -442,25 +465,315 @@ body {
 }
 
 .social-button:hover .devpost-logo {
-  filter: drop-shadow(0 0 2px #ffffff)
-          drop-shadow(0 0 5px #d0d0d0)
-          drop-shadow(0 0 10px #525252)
-          invert(1);
+  filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 5px #d0d0d0) drop-shadow(0 0 10px #525252) invert(1);
 }
 
 .social-button:hover .scratch-logo {
-  filter: drop-shadow(0 0 2px #ffffff)
-          drop-shadow(0 0 5px #d0d0d0)
-          drop-shadow(0 0 10px #525252)
-          grayscale(100%);
+  filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 5px #d0d0d0) drop-shadow(0 0 10px #525252) grayscale(100%);
+}
+
+/* Projects Section */
+
+.projects-wrapper {
+  width: 100%;
+  padding: 4rem 0 3rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.projects-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects-section {
+  width: 60vw;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projects-heading {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 3vw);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #393939;
+  padding-bottom: 0.75rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #393939;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1e1e1e;
+}
+
+.project-card:hover {
+  border-color: #696969;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+.project-image {
+  width: 280px;
+  min-width: 280px;
+  height: 280px;
+  overflow: hidden;
+  background-color: #111;
+  position: relative;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+.project-info {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.6rem;
+}
+
+.project-title {
+  color: white;
+  font-family: 'gravity', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.5vw);
+}
+
+.project-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.project-date {
+  font-size: 0.75vw;
+  color: #555;
+  font-family: Arial, sans-serif;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 0.7vw;
+  color: #aaa;
+  border: 1px solid #393939;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-family: Arial, sans-serif;
+}
+
+.project-desc {
+  color: #b0b0b0;
+  font-size: 0.9vw;
+  font-family: 'gravity', sans-serif;
+  line-height: 1.6;
+}
+
+.project-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.4rem;
+}
+
+/* Blog */
+
+.blog-main {
+  min-height: calc(100vh - 80px);
+  background-color: #0b0b0b;
+}
+
+.blog-list-container {
+  width: 50vw;
+  margin: 4rem auto;
+}
+
+.blog-list-heading {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 3vw);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #393939;
+  padding-bottom: 0.75rem;
+}
+
+.blog-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-list-item {
+  border-bottom: 1px solid #1e1e1e;
+  padding: 1.2rem 0;
+}
+
+.blog-list-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-decoration: none;
+  gap: 1rem;
+}
+
+.blog-list-title {
+  color: #d0d0d0;
+  font-family: 'gravity', sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.2vw);
+  transition: color 0.2s ease;
+}
+
+.blog-list-link:hover .blog-list-title {
+  color: white;
+}
+
+.blog-list-date {
+  color: #555;
+  font-family: Arial, sans-serif;
+  font-size: 0.75vw;
+  white-space: nowrap;
+}
+
+.blog-list-desc {
+  color: #555;
+  font-family: 'gravity', sans-serif;
+  font-size: 0.85vw;
+  margin-top: 0.35rem;
+}
+
+/* Blog post */
+
+.blog-post-container {
+  width: 50vw;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog-back {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.85vw;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.blog-back:hover {
+  color: #d0d0d0;
+}
+
+.blog-post-title {
+  color: white;
+  font-size: clamp(1.5rem, 2.5vw, 2.5vw);
+}
+
+.blog-post-date {
+  color: #555;
+  font-family: Arial, sans-serif;
+  font-size: 0.8vw;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-content {
+  color: #c0c0c0;
+  font-family: 'gravity', sans-serif;
+  font-size: 1vw;
+  line-height: 1.8;
+  margin-top: 1rem;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 1.5rem;
+}
+
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3 {
+  color: white;
+  font-family: 'gravity', sans-serif;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.blog-post-content h1 {
+  font-size: 1.8vw;
+}
+
+.blog-post-content h2 {
+  font-size: 1.4vw;
+}
+
+.blog-post-content h3 {
+  font-size: 1.1vw;
+}
+
+.blog-post-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-post-content a {
+  color: #d0d0d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-post-content code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85vw;
+  background-color: #1e1e1e;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.blog-post-content pre {
+  background-color: #1e1e1e;
+  border: 1px solid #393939;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85vw;
+}
+
+.blog-post-content img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .site-footer {
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: 0;
   font-size: 0.9rem;
   color: #393939;
-  border-top: 1px solid #393939;
+  border-top: 1px solid #222;
+  background-color: #0b0b0b;
 }
-

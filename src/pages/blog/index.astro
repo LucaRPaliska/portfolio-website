@@ -1,0 +1,34 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function slug(entry: typeof posts[0]) {
+  return entry.id.split('/')[0];
+}
+---
+
+<BlogLayout>
+  <div class="blog-list-container">
+    <h1 class="blog-list-heading gravity">Blog</h1>
+    <ul class="blog-list">
+      {sorted.map(post => (
+        <li class="blog-list-item">
+          <a href={`/blog/${slug(post)}`} class="blog-list-link">
+            <span class="blog-list-title">{post.data.title}</span>
+            <span class="blog-list-date">{formatDate(post.data.date)}</span>
+          </a>
+          {post.data.description && (
+            <p class="blog-list-desc">{post.data.description}</p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</BlogLayout>
