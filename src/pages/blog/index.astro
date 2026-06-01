@@ -16,7 +16,6 @@ function slug(entry: typeof posts[0]) {
 
 <BlogLayout>
   <div class="blog-list-container">
-    <h1 class="blog-list-heading gravity">Blog</h1>
     <ul class="blog-list">
       {sorted.map(post => (
         <li class="blog-list-item">
@@ -24,9 +23,6 @@ function slug(entry: typeof posts[0]) {
             <span class="blog-list-title">{post.data.title}</span>
             <span class="blog-list-date">{formatDate(post.data.date)}</span>
           </a>
-          {post.data.description && (
-            <p class="blog-list-desc">{post.data.description}</p>
-          )}
         </li>
       ))}
     </ul>

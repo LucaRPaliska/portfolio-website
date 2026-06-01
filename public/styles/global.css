@@ -1,3 +1,8 @@
+/* Scale viewport unit: frozen at 1440px, shrinks below ~928px to maintain 2rem margins */
+:root {
+  --sv: min(18px, calc((100vw - 10rem) / 60));
+}
+
 /* Reset some defaults */
 * {
   margin: 0;
@@ -18,7 +23,10 @@ body {
 }
 
 .welcome-area {
-  background-color: #161616;
+  --fade-height: 160px;
+  background: linear-gradient(to bottom,
+      #161616 calc(100% - var(--fade-height)),
+      #0f0f0f 100%);
   border-radius: 0 0 4rem 4rem;
   padding-bottom: calc(11rem);
 }
@@ -190,7 +198,7 @@ body {
 }
 
 #typewriter-wq {
-  width: 20vw;
+  width: calc(20 * var(--sv));
   border: 1px solid white !important;
 }
 
@@ -198,21 +206,21 @@ body {
   margin: 4rem auto 0;
 
   position: relative;
-  width: 60vw;
-  height: 26vw;
+  width: calc(60 * var(--sv));
+  height: calc(26 * var(--sv));
 }
 
 .name-card {
-  width: 37vw;
+  width: calc(37 * var(--sv));
   position: relative;
-  height: clamp(2.5rem, 8.5vw, 8.5vw);
+  height: max(2.5rem, calc(8.5 * var(--sv)));
 }
 
 #name-solid {
   position: absolute;
   color: white;
 
-  font-size: clamp(4vw, 7vw, 7vw);
+  font-size: calc(7 * var(--sv));
 
   display: inline-block;
 
@@ -222,7 +230,7 @@ body {
   position: absolute;
   color: white;
 
-  font-size: clamp(4rem, 7vw, 7vw);
+  font-size: max(4rem, calc(7 * var(--sv)));
   padding: 12px 0;
 
   display: inline-block;
@@ -233,7 +241,7 @@ body {
   width: 100%;
   color: #ffffff;
 
-  font-size: clamp(2.5rem, 5vw, 10rem);
+  font-size: clamp(2.5rem, calc(5 * var(--sv)), 10rem);
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 
   text-align: left;
@@ -253,10 +261,10 @@ body {
 }
 
 #pfp-3d {
-  width: 22vw;
-  height: 22vw;
+  width: calc(22 * var(--sv));
+  height: calc(22 * var(--sv));
   background-color: white;
-  border-radius: 4vw;
+  border-radius: calc(4 * var(--sv));
 
   float: right;
   display: flex;
@@ -269,10 +277,10 @@ body {
 }
 
 #pfp-3d .extra-depth {
-  width: 21vw;
-  height: 21vw;
+  width: calc(21 * var(--sv));
+  height: calc(21 * var(--sv));
   background: #d0d0d0;
-  border-radius: 4vw;
+  border-radius: calc(4 * var(--sv));
   float: right;
 
   display: flex;
@@ -292,10 +300,10 @@ body {
 }
 
 #pfp-3d .pfp-img {
-  width: 20vw;
-  height: 20vw;
+  width: calc(20 * var(--sv));
+  height: calc(20 * var(--sv));
   background: white;
-  border-radius: 4vw;
+  border-radius: calc(4 * var(--sv));
   float: right;
 
   transform: translateZ(30px);
@@ -312,7 +320,7 @@ body {
 #typewriter-pfp {
   color: white;
 
-  font-size: 1vw;
+  font-size: calc(var(--sv));
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
 }
 
@@ -321,7 +329,7 @@ body {
   line-height: 1.1;
   margin-left: 6px;
   color: white;
-  font-size: 0.16vw;
+  font-size: calc(0.16 * var(--sv));
   white-space: pre;
 }
 
@@ -370,7 +378,7 @@ body {
   position: absolute;
   width: 100%;
   color: white;
-  font-size: 1vw;
+  font-size: calc(var(--sv));
   padding: 10px;
 }
 
@@ -380,7 +388,7 @@ body {
 
   display: inline-block;
 
-  font-size: 1vw;
+  font-size: calc(var(--sv));
   padding: 10px;
 
 }
@@ -401,7 +409,7 @@ body {
   width: 100%;
   color: white;
   padding: 10px;
-  font-size: 1vw;
+  font-size: calc(var(--sv));
   white-space: pre;
 }
 
@@ -421,7 +429,7 @@ body {
 
   font-family: Arial, sans-serif;
 
-  padding: 0.25vw 0.5vw;
+  padding: calc(0.25 * var(--sv)) calc(0.5 * var(--sv));
   color: white;
   border: 1px solid white;
   background-color: #161616;
@@ -433,16 +441,16 @@ body {
 
 .social-button i {
   position: relative;
-  font-size: 1vw;
+  font-size: calc(var(--sv));
   display: inline-flex;
   line-height: 1;
   justify-content: center;
 }
 
 .social-button .button-text {
-  font-size: 0.8vw;
+  font-size: calc(0.8 * var(--sv));
   font-weight: 400;
-  padding: 0.2vw;
+  padding: calc(0.2 * var(--sv));
 }
 
 .social-button:hover {
@@ -451,15 +459,15 @@ body {
 }
 
 .devpost-logo {
-  height: clamp(15px, 1vw, 1vw);
-  width: clamp(15px, 1vw, 1vw);
+  height: max(15px, calc(var(--sv)));
+  width: max(15px, calc(var(--sv)));
   margin: 0 2px 0 0;
   filter: invert(1);
 }
 
 .scratch-logo {
-  height: clamp(15px, 1vw, 1vw);
-  width: clamp(15px, 1vw, 1vw);
+  height: max(15px, calc(var(--sv)));
+  width: max(15px, calc(var(--sv)));
   margin: 0 2px 0 0;
   filter: grayscale(100%);
 }
@@ -488,7 +496,7 @@ body {
 }
 
 .projects-section {
-  width: 60vw;
+  width: calc(60 * var(--sv));
   margin: 2rem auto 0;
   display: flex;
   flex-direction: column;
@@ -497,7 +505,7 @@ body {
 
 .projects-heading {
   color: white;
-  font-size: clamp(1.5rem, 3vw, 3vw);
+  font-size: max(1.5rem, calc(3 * var(--sv)));
   margin-bottom: 1rem;
   border-bottom: 1px solid #393939;
   padding-bottom: 0.75rem;
@@ -511,6 +519,7 @@ body {
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background-color: #1e1e1e;
+  position: relative;
 }
 
 .project-card:hover {
@@ -519,9 +528,9 @@ body {
 }
 
 .project-image {
-  width: 280px;
-  min-width: 280px;
-  height: 280px;
+  width: calc(15.5 * var(--sv));
+  min-width: calc(15.5 * var(--sv));
+  height: calc(15.5 * var(--sv));
   overflow: hidden;
   background-color: #111;
   position: relative;
@@ -552,7 +561,7 @@ body {
 .project-title {
   color: white;
   font-family: 'gravity', sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.5vw);
+  font-size: max(1rem, calc(1.5 * var(--sv)));
 }
 
 .project-title-row {
@@ -562,9 +571,13 @@ body {
 }
 
 .project-date {
-  font-size: 0.75vw;
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: calc(0.75 * var(--sv));
   color: #555;
   font-family: Arial, sans-serif;
+  z-index: 1;
 }
 
 .project-tags {
@@ -574,7 +587,7 @@ body {
 }
 
 .tag {
-  font-size: 0.7vw;
+  font-size: calc(0.7 * var(--sv));
   color: #aaa;
   border: 1px solid #393939;
   border-radius: 20px;
@@ -584,7 +597,7 @@ body {
 
 .project-desc {
   color: #b0b0b0;
-  font-size: 0.9vw;
+  font-size: calc(0.9 * var(--sv));
   font-family: 'gravity', sans-serif;
   line-height: 1.6;
 }
@@ -635,14 +648,14 @@ body {
 }
 
 .blog-list-title {
-  color: #d0d0d0;
+  color: #666;
   font-family: 'gravity', sans-serif;
-  font-size: clamp(0.9rem, 1.2vw, 1.2vw);
+  font-size: clamp(0.75rem, 0.9vw, 0.9vw);
   transition: color 0.2s ease;
 }
 
 .blog-list-link:hover .blog-list-title {
-  color: white;
+  color: #aaa;
 }
 
 .blog-list-date {
