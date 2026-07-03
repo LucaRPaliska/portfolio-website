@@ -1,6 +1,6 @@
 ---
 title: '"Software Engineering is Dead"'
-date: 2026-07-3
+date: 2026-07-03
 ---
 
 * ["in 12 months, we may be in a world where AI is writing essentially all of the code,"](https://www.businessinsider.com/anthropic-ceo-ai-90-percent-code-3-to-6-months-2025-3)
