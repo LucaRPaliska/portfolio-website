@@ -33,7 +33,6 @@
         <ul>
           <li><a href="/resume">RESUME</a></li>
           <li><a href="/blog">BLOG</a></li>
-          <li><a href="/contact">CONTACT</a></li>
         </ul>
       </nav>
     </header>
@@ -67,26 +66,26 @@
 
       <div class="name-card">
         <div id="typewriter-intro" class="hidden"></div>
-        <div id="introduction" class="gravity hidden-mask">Hey! I'm Luca. I've loved programming since I was a kid and am currently learning about kernel development and optimizing low-level languages. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am configuring a NixOS system right now. Feel free to look at my projects and blog!</div>
+        <div id="introduction" class="gravity hidden-mask">Hey! I'm Luca. I've loved programming since I was a kid. I'm a big fan of hackathons (LA Hacks, Tree Hacks, Cal Hacks) and specialize in back-end development. I've daily-driven linux for a few years, and am using NixOS at the moment. I am deeply interested in the applications of machine learning and am currently exploring world models. Feel free to look at my projects and blog!</div>
       </div>
       <div class="name-card">
         <div id="typewriter-socials", class="hidden"></div>
         <div id="socials", class="hidden-mask">
           <nav>
             <ul>
-              <li><a href="https://x.com/LucaRPaliska" class="social-button">
+              <li><a href="https://x.com/LucaRPaliska" class="social-button" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-twitter icon"></i>
                 <span class="button-text">LucaRPaliska</span>
               </a></li>
-              <li><a href="https://github.com/LucaRPaliska" class="social-button">
+              <li><a href="https://github.com/LucaRPaliska" class="social-button" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-github icon"></i>
                 <span class="button-text">LucaRPaliska</span>
               </a></li>
-              <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button">
+              <li><a href="https://www.linkedin.com/in/luca-paliska-3b88b5279/" class="social-button" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-linkedin icon"></i>
                 <span class="button-text">luca-paliska</span>
               </a></li>
-              <li><a href="https://devpost.com/lucarpaliska" class="social-button">
+              <li><a href="https://devpost.com/lucarpaliska" class="social-button" target="_blank" rel="noopener noreferrer">
                 <i class="logos devpost"></i>
                 <span class="button-text">lucarpaliska</span>
               </a></li>
@@ -94,7 +93,7 @@
                 <i class="fa-solid fa-envelope icon"></i>
                 <span class="button-text">@gmail.com</span>
               </a></li>
-              <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button">
+              <li><a href="https://scratch.mit.edu/users/lol1859/" class="social-button" target="_blank" rel="noopener noreferrer">
                   <!--<img src="/images/scratch.svg" alt="Scratch Logo" class="scratch-logo"/>-->
                 <i class="logos scratch"></i>
                 <span class="button-text">lol1859</span>
@@ -107,16 +106,25 @@
     </div>
     </div>
 
+    <script>
+      import Lenis from 'lenis';
+      const lenis = new Lenis({ lerp: 0.2 });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    </script>
     <script src="../scripts/typeit-vim.js"></script>
     <script src="../scripts/vanilla-tilt.js"></script>
     <script>
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.disconnect();
-        }
-      }, { threshold: 0.4 });
-      observer.observe(document.querySelector('.projects-wrapper'));
+      const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); headingObserver.unobserve(entry.target); } });
+      }, { rootMargin: "0px 0px -15% 0px", threshold: 0.1 });
+
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); cardObserver.unobserve(entry.target); } });
+      }, { rootMargin: "0px 0px 150px 0px", threshold: 0.7 });
+
+      headingObserver.observe(document.querySelector('.projects-heading'));
+      document.querySelectorAll('.project-card').forEach(card => cardObserver.observe(card));
     </script>
 
     <div class="projects-wrapper">
@@ -138,9 +146,9 @@
             <span class="tag">Nvim</span>
             <span class="tag">Dotfiles</span>
           </p>
-          <p class="project-desc">My complete NixOS setup managed via flakes and home-manager, publicly available. </p>
+          <p class="project-desc">My complete NixOS setup managed via flakes and home-manager, publicly available. Contains dotfiles of nixos, hyprland, and neovim. Currently working on creating light-weight flakes for faster server development and deployment.</p>
           <div class="project-links">
-            <a href="https://github.com/LucaRPaliska/nixos-config/tree/main" class="social-button"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+            <a href="https://github.com/LucaRPaliska/nixos-config/tree/main" class="social-button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
           </div>
         </div>
       </div>
@@ -163,8 +171,8 @@
           </p>
           <p class="project-desc">AI-powered financial education platform that integrates Quantum Computing Algorithms and Retrieval Augmented Generation (RAG) to make stock predictions and provide tailored advice.</p>
           <div class="project-links">
-            <a href="https://github.com/ilksh/TreeHack-2025" class="social-button"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
-            <a href="https://devpost.com/software/tradelingo" class="social-button"><i class="logos devpost"></i><span class="button-text">Devpost</span></a>
+            <a href="https://github.com/ilksh/TreeHack-2025" class="social-button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+            <a href="https://devpost.com/software/tradelingo" class="social-button" target="_blank" rel="noopener noreferrer"><i class="logos devpost"></i><span class="button-text">Devpost</span></a>
           </div>
         </div>
       </div>
@@ -187,8 +195,30 @@
           </p>
           <p class="project-desc">Autonomous Emergency Response & Intelligence System: Locates victims of disasters needing urgent care using autonomous drone navigation and a custom YOLOv8 model. Won the $500 Groq multimodal AI award by utilizing the DAIN agentic AI platform.</p>
           <div class="project-links">
-            <a href="https://github.com/Jeffuz/AERIS" class="social-button"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
-            <a href="https://devpost.com/software/aeris-ej7d9k" class="social-button"><i class="logos devpost"></i><span class="button-text">Devpost</span></a>
+            <a href="https://github.com/Jeffuz/AERIS" class="social-button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+            <a href="https://devpost.com/software/aeris-ej7d9k" class="social-button" target="_blank" rel="noopener noreferrer"><i class="logos devpost"></i><span class="button-text">Devpost</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-date">March 2026 - June 2026</span>
+        <div class="project-image">
+          <img src="/images/qwenlayers.png" alt="Project screenshot" />
+        </div>
+        <div class="project-info">
+          <div class="project-title-row">
+            <h3 class="project-title">189G VLM Final Project</h3>
+          </div>
+          <p class="project-tags">
+            <span class="tag">VLM</span>
+            <span class="tag">Pytorch</span>
+            <span class="tag">Qwen</span>
+          </p>
+          <p class="project-desc">Final project for my Large Foundational Models class. Worked in a team to preemptively detect visual hallucinations of a VLM by observing hidden state activations.</p>
+          <div class="project-links">
+            <a href="https://github.com/LucaRPaliska/189G-Final-Project" class="social-button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github icon"></i><span class="button-text">GitHub</span></a>
+            <a href="public/files/189G_Final_Report.pdf" class="social-button" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines icon" style="padding: 0 2px;"></i><span class="button-text">Report</span></a>
           </div>
         </div>
       </div>
